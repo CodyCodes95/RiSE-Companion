@@ -1,0 +1,31 @@
+{
+    "name": "RiSE Companion",
+    "version": "0.1",
+    "description": "Extra functionality for RiSE",
+    "permissions": [
+        "storage",
+        "tabs"
+    ],
+    "host_permissions": [
+        "https://*/*"
+    ],
+    "action": {
+        "default_icon": {
+            "16": "16.png",
+            "32": "32.png"
+        },
+        "default_title": "RiSE Companion",
+        "default_popup": "index.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.imiscloud.com/*"
+            ],
+            "js": [
+                "background.js"
+            ]
+        }
+    ],
+    "manifest_version": 3
+}
