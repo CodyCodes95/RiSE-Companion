@@ -16,7 +16,6 @@ const addSaveHotkey = (document) => {
   document.addEventListener("keydown", (e) => {
     if (e.repeat) return;
     pressedKeys.push(e.key);
-    console.log(pressedKeys);
     // if (pressedKeys[0] == "Control" && pressedKeys[1] == "Enter") {
     //   window.parent.parent.parent.document
     //     .querySelector("iframe")
@@ -64,3 +63,31 @@ observer.observe(document, {
   characterData: true,
   attributes: true,
 });
+
+if (document.title === "WorkflowMax | My Time Sheet") {
+  const allTimes = document.querySelectorAll(".max-summary-text");
+  allTimes.forEach((time) => {
+    if (Number(time.innerText.replace(":", ".")) < 7.5) {
+      time.style.border = "red 5px solid";
+    }
+  });
+
+  let foundMeeting = false;
+
+  const entries = document.querySelectorAll(".summary-cell");
+
+  if (entries.length === 0) {
+    alert("No daily scrum found");
+  } else {
+    entries.forEach((cell, i) => {
+      if (cell.innerText === "Daily scrum") {
+        foundMeeting = true;
+      } else if (
+        foundMeeting === false &&
+        i === document.querySelectorAll(".summary-cell").length - 1
+      ) {
+        alert("No daily scrum found");
+      }
+    });
+  }
+}

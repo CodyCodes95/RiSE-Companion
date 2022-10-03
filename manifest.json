@@ -20,7 +20,8 @@
     "content_scripts": [
         {
             "matches": [
-                "*://*.imiscloud.com/*"
+                "*://*.imiscloud.com/*",
+                "*://*.workflowmax.com/*"
             ],
             "js": [
                 "background.js"
