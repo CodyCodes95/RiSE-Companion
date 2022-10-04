@@ -1,20 +1,21 @@
 {
-    "name": "RiSE Companion",
+    "name": "Work Companion",
     "version": "0.1",
-    "description": "Extra functionality for RiSE",
+    "description": "Extra functionality for websiites commonly used at work",
     "permissions": [
         "storage",
         "tabs"
     ],
     "host_permissions": [
-        "https://*/*"
+        "*://*.imiscloud.com/*",
+        "*://*.workflowmax.com/*"
     ],
     "action": {
         "default_icon": {
             "16": "16.png",
             "32": "32.png"
         },
-        "default_title": "RiSE Companion",
+        "default_title": "Work Companion",
         "default_popup": "index.html"
     },
     "content_scripts": [

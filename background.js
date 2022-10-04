@@ -67,7 +67,7 @@ observer.observe(document, {
 if (document.title === "WorkflowMax | My Time Sheet") {
   const allTimes = document.querySelectorAll(".max-summary-text");
   allTimes.forEach((time) => {
-    if (Number(time.innerText.replace(":", ".")) < 7.5) {
+    if (Number(time.innerText.replace(":", ".")) < 7.3) {
       time.style.border = "red 5px solid";
     }
   });
@@ -76,8 +76,21 @@ if (document.title === "WorkflowMax | My Time Sheet") {
 
   const entries = document.querySelectorAll(".summary-cell");
 
+  const setDaily = () => {
+    const daily = confirm("Set daily scrum?");
+    if (daily) {
+      document.querySelector("#ctl00_PageContent_ctlxlayoutNotes").value =
+        "Daily Scrum";
+      // dispatch event
+      
+      document.querySelector
+      document.querySelector("#ctl00_PageContent_ctlxlayoutTime").value =
+        "0:15";
+    }
+  };
+
   if (entries.length === 0) {
-    alert("No daily scrum found");
+    setDaily();
   } else {
     entries.forEach((cell, i) => {
       if (cell.innerText === "Daily scrum") {
@@ -86,8 +99,9 @@ if (document.title === "WorkflowMax | My Time Sheet") {
         foundMeeting === false &&
         i === document.querySelectorAll(".summary-cell").length - 1
       ) {
-        alert("No daily scrum found");
+        setDaily();
       }
     });
   }
 }
+
